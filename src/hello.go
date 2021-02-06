@@ -4,7 +4,6 @@ import (
     "fmt"
     "github.com/ozgio/strutil"
     "os"
-    "strconv"
     "time"
 )
 
@@ -21,16 +20,15 @@ func main () {
     }
 
     if value == "-h" || value == "--help" {
-        fmt.Println("USAGE: Provide a string and we'll say hello!")
-    } else {
-        output := "Hello, " + value + "!"
-        output, _ = strutil.DrawCustomBox(output, 40, strutil.Center, strutil.SimpleBox9Slice(), "\n")
-        fmt.Println(output)
+        fmt.Println("USAGE: Provide a string and we'll give you a personal hello!")
+        value = "default"
     }
-
-    IsSleepEnabled, _ := strconv.ParseBool(os.Getenv("HELLO_SLEEP"))
-    if IsSleepEnabled {
-        fmt.Printf("Sleeping 90 seconds...\n")
+    
+    output := "Hello, " + value + "!"
+    output, _ = strutil.DrawCustomBox(output, 40, strutil.Center, strutil.SimpleBox9Slice(), "\n")
+    
+    for {
+        fmt.Println(output)
         time.Sleep(90 * time.Second)
     }
 
