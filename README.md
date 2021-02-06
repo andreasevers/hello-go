@@ -85,11 +85,35 @@ kns prod
 k get all
 ```
 
+## ytt
+
+### Overlays
+
+```bash
+cd ../../../ytt/overlays
+bat *
+ytt -f deployment.yml -f dev.yml | kubectl apply -f-
+ytt -f deployment.yml -f prod.yml
+```
+
+### Pythonic
+
+```bash
+cd ../pythonic
+bat *
+ytt -f base/ -f envs/dev.yml | kubectl apply -f-
+ytt -f base/ -f envs/prod.yml
+```
+
 ## Helm
 
 ```bash
-cd ../../../helm
+cd ../../helm
+tree .
+bat all-the-things
 kns dev
 helm upgrade --install hello-go -f values.yml -f values-dev.yml .
+k get pods
 ```
+
 

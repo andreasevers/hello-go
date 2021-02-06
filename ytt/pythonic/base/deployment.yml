@@ -1,0 +1,21 @@
+#@ load("@ytt:data", "data")
+#@ load("helpers.star", "name")
+#@ load("helpers.lib.yml", "labels")
+
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: #@ name()
+  labels: #@ labels()
+  namespace: #@ data.values.namespace
+spec:
+  replicas: #@ data.values.replicaCount
+  template:
+    metadata:
+      labels:
+        app: #@ name()
+    spec:
+      containers:
+      - name: #@ name()
+        image: #@ "{}:{}".format(data.values.image.repository, data.values.image.tag)
+        imagePullPolicy: #@ data.values.image.pullPolicy

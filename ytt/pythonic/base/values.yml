@@ -1,0 +1,7 @@
+#@data/values
+---
+replicaCount: 1
+image:
+  repository: andreasevers/hello-go
+  tag: pack-1.0.0
+  pullPolicy: IfNotPresent

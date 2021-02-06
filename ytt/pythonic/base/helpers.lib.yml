@@ -1,0 +1,5 @@
+#@ load("helpers.star", "name")
+
+#@ def labels():
+app: #@ name()
+#@ end

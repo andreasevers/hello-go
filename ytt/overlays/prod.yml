@@ -1,0 +1,15 @@
+#@ load("@ytt:overlay", "overlay")
+
+#@overlay/match by=overlay.all, expects="1+"
+---
+metadata:
+  #@overlay/match missing_ok=True
+  namespace: prod
+spec:
+  template:
+    spec:
+      containers:
+      #@overlay/match by="name"
+      - name: hello
+        #@overlay/match missing_ok=True
+        image: andreasevers/hello-go:pack-1.0.1
