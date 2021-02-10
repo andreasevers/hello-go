@@ -2,7 +2,10 @@ apiVersion: kbld.k14s.io/v1alpha1
 kind: Config
 sources:
 - image: hello
-  path: ../src # <-- where to find hello source
+  path: ./src # <-- where to find hello source
+  docker:
+    build:
+      file: ../Dockerfiles/Dockerfile-6
 destinations:
 - image: hello
   newImage: docker.io/andreasevers/hello-go # <-- where to push hello image
